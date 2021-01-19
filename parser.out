@@ -1,0 +1,357 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> change
+Rule 2     program -> program change
+Rule 3     change -> .
+Rule 4     change -> . ~
+Rule 5     change -> ~ change
+Rule 6     change -> ^
+Rule 7     change -> ^ { INT }
+Rule 8     change -> _
+Rule 9     change -> _ { INT }
+Rule 10    change -> :
+Rule 11    change -> >
+Rule 12    change -> <
+Rule 13    change -> *
+
+Terminals, with rules where they appear
+
+*                    : 13
+.                    : 3 4
+:                    : 10
+<                    : 12
+>                    : 11
+INT                  : 7 9
+^                    : 6 7
+_                    : 8 9
+error                : 
+{                    : 7 9
+}                    : 7 9
+~                    : 4 5
+
+Nonterminals, with rules where they appear
+
+change               : 1 2 5
+program              : 2 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . change
+    (2) program -> . program change
+    (3) change -> . .
+    (4) change -> . . ~
+    (5) change -> . ~ change
+    (6) change -> . ^
+    (7) change -> . ^ { INT }
+    (8) change -> . _
+    (9) change -> . _ { INT }
+    (10) change -> . :
+    (11) change -> . >
+    (12) change -> . <
+    (13) change -> . *
+
+    .               shift and go to state 3
+    ~               shift and go to state 4
+    ^               shift and go to state 5
+    _               shift and go to state 6
+    :               shift and go to state 7
+    >               shift and go to state 8
+    <               shift and go to state 9
+    *               shift and go to state 10
+
+    program                        shift and go to state 1
+    change                         shift and go to state 2
+
+state 1
+
+    (0) S' -> program .
+    (2) program -> program . change
+    (3) change -> . .
+    (4) change -> . . ~
+    (5) change -> . ~ change
+    (6) change -> . ^
+    (7) change -> . ^ { INT }
+    (8) change -> . _
+    (9) change -> . _ { INT }
+    (10) change -> . :
+    (11) change -> . >
+    (12) change -> . <
+    (13) change -> . *
+
+    .               shift and go to state 3
+    ~               shift and go to state 4
+    ^               shift and go to state 5
+    _               shift and go to state 6
+    :               shift and go to state 7
+    >               shift and go to state 8
+    <               shift and go to state 9
+    *               shift and go to state 10
+
+    change                         shift and go to state 11
+
+state 2
+
+    (1) program -> change .
+
+    .               reduce using rule 1 (program -> change .)
+    ~               reduce using rule 1 (program -> change .)
+    ^               reduce using rule 1 (program -> change .)
+    _               reduce using rule 1 (program -> change .)
+    :               reduce using rule 1 (program -> change .)
+    >               reduce using rule 1 (program -> change .)
+    <               reduce using rule 1 (program -> change .)
+    *               reduce using rule 1 (program -> change .)
+    $end            reduce using rule 1 (program -> change .)
+
+
+state 3
+
+    (3) change -> . .
+    (4) change -> . . ~
+
+  ! shift/reduce conflict for ~ resolved as shift
+    .               reduce using rule 3 (change -> . .)
+    ^               reduce using rule 3 (change -> . .)
+    _               reduce using rule 3 (change -> . .)
+    :               reduce using rule 3 (change -> . .)
+    >               reduce using rule 3 (change -> . .)
+    <               reduce using rule 3 (change -> . .)
+    *               reduce using rule 3 (change -> . .)
+    $end            reduce using rule 3 (change -> . .)
+    ~               shift and go to state 12
+
+  ! ~               [ reduce using rule 3 (change -> . .) ]
+
+
+state 4
+
+    (5) change -> ~ . change
+    (3) change -> . .
+    (4) change -> . . ~
+    (5) change -> . ~ change
+    (6) change -> . ^
+    (7) change -> . ^ { INT }
+    (8) change -> . _
+    (9) change -> . _ { INT }
+    (10) change -> . :
+    (11) change -> . >
+    (12) change -> . <
+    (13) change -> . *
+
+    .               shift and go to state 3
+    ~               shift and go to state 4
+    ^               shift and go to state 5
+    _               shift and go to state 6
+    :               shift and go to state 7
+    >               shift and go to state 8
+    <               shift and go to state 9
+    *               shift and go to state 10
+
+    change                         shift and go to state 13
+
+state 5
+
+    (6) change -> ^ .
+    (7) change -> ^ . { INT }
+
+    .               reduce using rule 6 (change -> ^ .)
+    ~               reduce using rule 6 (change -> ^ .)
+    ^               reduce using rule 6 (change -> ^ .)
+    _               reduce using rule 6 (change -> ^ .)
+    :               reduce using rule 6 (change -> ^ .)
+    >               reduce using rule 6 (change -> ^ .)
+    <               reduce using rule 6 (change -> ^ .)
+    *               reduce using rule 6 (change -> ^ .)
+    $end            reduce using rule 6 (change -> ^ .)
+    {               shift and go to state 14
+
+
+state 6
+
+    (8) change -> _ .
+    (9) change -> _ . { INT }
+
+    .               reduce using rule 8 (change -> _ .)
+    ~               reduce using rule 8 (change -> _ .)
+    ^               reduce using rule 8 (change -> _ .)
+    _               reduce using rule 8 (change -> _ .)
+    :               reduce using rule 8 (change -> _ .)
+    >               reduce using rule 8 (change -> _ .)
+    <               reduce using rule 8 (change -> _ .)
+    *               reduce using rule 8 (change -> _ .)
+    $end            reduce using rule 8 (change -> _ .)
+    {               shift and go to state 15
+
+
+state 7
+
+    (10) change -> : .
+
+    .               reduce using rule 10 (change -> : .)
+    ~               reduce using rule 10 (change -> : .)
+    ^               reduce using rule 10 (change -> : .)
+    _               reduce using rule 10 (change -> : .)
+    :               reduce using rule 10 (change -> : .)
+    >               reduce using rule 10 (change -> : .)
+    <               reduce using rule 10 (change -> : .)
+    *               reduce using rule 10 (change -> : .)
+    $end            reduce using rule 10 (change -> : .)
+
+
+state 8
+
+    (11) change -> > .
+
+    .               reduce using rule 11 (change -> > .)
+    ~               reduce using rule 11 (change -> > .)
+    ^               reduce using rule 11 (change -> > .)
+    _               reduce using rule 11 (change -> > .)
+    :               reduce using rule 11 (change -> > .)
+    >               reduce using rule 11 (change -> > .)
+    <               reduce using rule 11 (change -> > .)
+    *               reduce using rule 11 (change -> > .)
+    $end            reduce using rule 11 (change -> > .)
+
+
+state 9
+
+    (12) change -> < .
+
+    .               reduce using rule 12 (change -> < .)
+    ~               reduce using rule 12 (change -> < .)
+    ^               reduce using rule 12 (change -> < .)
+    _               reduce using rule 12 (change -> < .)
+    :               reduce using rule 12 (change -> < .)
+    >               reduce using rule 12 (change -> < .)
+    <               reduce using rule 12 (change -> < .)
+    *               reduce using rule 12 (change -> < .)
+    $end            reduce using rule 12 (change -> < .)
+
+
+state 10
+
+    (13) change -> * .
+
+    .               reduce using rule 13 (change -> * .)
+    ~               reduce using rule 13 (change -> * .)
+    ^               reduce using rule 13 (change -> * .)
+    _               reduce using rule 13 (change -> * .)
+    :               reduce using rule 13 (change -> * .)
+    >               reduce using rule 13 (change -> * .)
+    <               reduce using rule 13 (change -> * .)
+    *               reduce using rule 13 (change -> * .)
+    $end            reduce using rule 13 (change -> * .)
+
+
+state 11
+
+    (2) program -> program change .
+
+    .               reduce using rule 2 (program -> program change .)
+    ~               reduce using rule 2 (program -> program change .)
+    ^               reduce using rule 2 (program -> program change .)
+    _               reduce using rule 2 (program -> program change .)
+    :               reduce using rule 2 (program -> program change .)
+    >               reduce using rule 2 (program -> program change .)
+    <               reduce using rule 2 (program -> program change .)
+    *               reduce using rule 2 (program -> program change .)
+    $end            reduce using rule 2 (program -> program change .)
+
+
+state 12
+
+    (4) change -> . ~ .
+
+    .               reduce using rule 4 (change -> . ~ .)
+    ~               reduce using rule 4 (change -> . ~ .)
+    ^               reduce using rule 4 (change -> . ~ .)
+    _               reduce using rule 4 (change -> . ~ .)
+    :               reduce using rule 4 (change -> . ~ .)
+    >               reduce using rule 4 (change -> . ~ .)
+    <               reduce using rule 4 (change -> . ~ .)
+    *               reduce using rule 4 (change -> . ~ .)
+    $end            reduce using rule 4 (change -> . ~ .)
+
+
+state 13
+
+    (5) change -> ~ change .
+
+    .               reduce using rule 5 (change -> ~ change .)
+    ~               reduce using rule 5 (change -> ~ change .)
+    ^               reduce using rule 5 (change -> ~ change .)
+    _               reduce using rule 5 (change -> ~ change .)
+    :               reduce using rule 5 (change -> ~ change .)
+    >               reduce using rule 5 (change -> ~ change .)
+    <               reduce using rule 5 (change -> ~ change .)
+    *               reduce using rule 5 (change -> ~ change .)
+    $end            reduce using rule 5 (change -> ~ change .)
+
+
+state 14
+
+    (7) change -> ^ { . INT }
+
+    INT             shift and go to state 16
+
+
+state 15
+
+    (9) change -> _ { . INT }
+
+    INT             shift and go to state 17
+
+
+state 16
+
+    (7) change -> ^ { INT . }
+
+    }               shift and go to state 18
+
+
+state 17
+
+    (9) change -> _ { INT . }
+
+    }               shift and go to state 19
+
+
+state 18
+
+    (7) change -> ^ { INT } .
+
+    .               reduce using rule 7 (change -> ^ { INT } .)
+    ~               reduce using rule 7 (change -> ^ { INT } .)
+    ^               reduce using rule 7 (change -> ^ { INT } .)
+    _               reduce using rule 7 (change -> ^ { INT } .)
+    :               reduce using rule 7 (change -> ^ { INT } .)
+    >               reduce using rule 7 (change -> ^ { INT } .)
+    <               reduce using rule 7 (change -> ^ { INT } .)
+    *               reduce using rule 7 (change -> ^ { INT } .)
+    $end            reduce using rule 7 (change -> ^ { INT } .)
+
+
+state 19
+
+    (9) change -> _ { INT } .
+
+    .               reduce using rule 9 (change -> _ { INT } .)
+    ~               reduce using rule 9 (change -> _ { INT } .)
+    ^               reduce using rule 9 (change -> _ { INT } .)
+    _               reduce using rule 9 (change -> _ { INT } .)
+    :               reduce using rule 9 (change -> _ { INT } .)
+    >               reduce using rule 9 (change -> _ { INT } .)
+    <               reduce using rule 9 (change -> _ { INT } .)
+    *               reduce using rule 9 (change -> _ { INT } .)
+    $end            reduce using rule 9 (change -> _ { INT } .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ~ in state 3 resolved as shift
